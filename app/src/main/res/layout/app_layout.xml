@@ -25,6 +25,33 @@
             />
 
 
+        <Button
+            android:id="@+id/btn_sendBroadcast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="send" />
+
+        <EditText
+            android:id="@+id/et_song"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入歌曲" />
+
+        <Button
+            android:id="@+id/btn_play"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="play" />
+
+        <Button
+            android:id="@+id/btn_stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="stop" />
+
 
     </LinearLayout>
 
