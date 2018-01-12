@@ -1,12 +1,19 @@
 package com.example.administrator.my_kotlinapplication
 
 
+import android.app.Service
+import android.content.ComponentName
+import android.content.Intent
 import android.content.IntentFilter
+import android.content.ServiceConnection
 import android.os.AsyncTask
 import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.IBinder
+import android.util.Log
 import android.widget.Toast
+import kotlinx.android.synthetic.main.app_layout.*
 import org.jetbrains.anko.async
 import org.jetbrains.anko.uiThread
 import java.net.URL
@@ -23,13 +30,45 @@ class MainActivity : AppCompatActivity() {
             "Sat 6/28 - TRAPPED IN WEATHERSTATION - 23/18",
             "Sun 6/29 - Sunny - 20/7"
     )
+
+    var binder: MyService.MyBinder? = null
+    private val connection: ServiceConnection = object : ServiceConnection{
+
+        /**
+         * 当Activity与Service断开连接时回调该方法
+         */
+        override fun onServiceDisconnected(name: ComponentName?) {
+            println("--disconnected--")
+
+        }
+
+        /**
+         * 当Activity与Service连接成功时回调该方法
+         */
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            println("--connected--")
+            binder = service as MyService.MyBinder? //获取service的onBind方法所返回的MyBinder对象
+        }
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.app_layout)
-       async {
-           val text = URL("https://sslapi.hitokoto.cn/?c=f&encode=text").readText()
-           uiThread { show.text = text }
-       }
+//       async {
+//           val text = URL("https://www.baidu.com").readText()
+//           uiThread { show.text = text }
+//       }
+
+        val intent = Intent(this,MyService::class.java)
+        bindService(intent,connection,Service.BIND_AUTO_CREATE)
+        //1.intent: Service 开启的service 2.connection: ServiceConnetion 监听访问者和Service 3.flag:Boolean 是否自动创建Service 0 则不自动创建,BIND_AUTO_CREATE自动创建
+        getState.setOnClickListener { toast("service的count值:${binder?.getCount()}") }
+
+//        startService(intent)//启动service
+//        startService(intent)//启动service
+//        stopService(intent)//停止service
+
 
 //        var i: Int = 0
 //        btn.setOnClickListener { toast("click ${i++}") }
@@ -40,6 +79,11 @@ class MainActivity : AppCompatActivity() {
 
 //        val request = Request("http://www.baidu.com")
 //        request.run()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unbindService(connection)
     }
 
 
@@ -89,15 +133,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         }*/
-     fun variableTest() {
-        val s = "example"
-        val c = s[2] // 这是一个字符'a'
-        // 迭代string
-        for (c in s) {
-            print(c)
-        }
-    }
-
     fun toast(message: String, time: Int = Toast.LENGTH_SHORT): Unit {
         Toast.makeText(this,message,time).show()
     }
