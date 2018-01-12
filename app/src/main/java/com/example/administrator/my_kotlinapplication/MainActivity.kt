@@ -19,7 +19,6 @@ import org.jetbrains.anko.uiThread
 import java.net.URL
 
 
-
 class MainActivity : AppCompatActivity() {
     private val items = listOf(
             "Mon 6/23 - Sunny - 31/17",
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     )
 
     var binder: MyService.MyBinder? = null
-    private val connection: ServiceConnection = object : ServiceConnection{
+    private val connection: ServiceConnection = object : ServiceConnection {
         /**
          * 当Activity与Service断开连接时回调该方法
          */
@@ -40,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             println("--disconnected--")
 
         }
+
         /**
          * 当Activity与Service连接成功时回调该方法
          */
@@ -57,23 +57,32 @@ class MainActivity : AppCompatActivity() {
 //           uiThread { show.text = text }
 //       }
 
-        val intent = Intent(this,MyService::class.java)
-        bindService(intent,connection,Service.BIND_AUTO_CREATE)
-        //1.intent: Service 开启的service 2.connection: ServiceConnetion 监听访问者和Service 3.flag:Boolean 是否自动创建Service 0 则不自动创建,BIND_AUTO_CREATE自动创建
-        getState.setOnClickListener { toast("service的count值:${binder?.getCount()}") }
 
+        bindServiceTest()
+        sendBroadcastTest()
 //        startService(intent)//启动service
 //        startService(intent)//启动service
 //        stopService(intent)//停止service
+    }
+
+    private fun sendBroadcastTest() {
+        val intent = Intent()
+        intent.setAction("com.example.MyBroadcast") //与接收器设置的一样
+        intent.putExtra("msg","Hello")
+        sendBroadcast(intent) //发送广播
+    }
+
+    private fun bindServiceTest() {
+        val intent = Intent(this, MyService::class.java)
+        bindService(intent, connection, Service.BIND_AUTO_CREATE)
+        //1.intent: Service 开启的service 2.connection: ServiceConnetion 监听访问者和Service 3.flag:Boolean 是否自动创建Service 0 则不自动创建,BIND_AUTO_CREATE自动创建
+        getState.setOnClickListener { toast("service的count值:${binder?.getCount()}") }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         unbindService(connection)
     }
-
-
-
 
 
     /*
@@ -120,6 +129,6 @@ class MainActivity : AppCompatActivity() {
 
         }*/
     fun toast(message: String, time: Int = Toast.LENGTH_SHORT): Unit {
-        Toast.makeText(this,message,time).show()
+        Toast.makeText(this, message, time).show()
     }
 }
