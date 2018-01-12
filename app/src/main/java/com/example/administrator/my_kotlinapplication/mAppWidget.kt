@@ -21,8 +21,6 @@ class mAppWidget : AppWidgetProvider() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         super.onReceive(context, intent)
-
-//        if (intent?.action.equals("gengxin")){
             val remote = RemoteViews(context?.packageName,R.layout.m_app_widget)
             async { val data = URL("https://sslapi.hitokoto.cn/?c=f&encode=text").readText()
                 uiThread {  remote.setTextViewText(R.id.appwidget_text,data)
@@ -32,7 +30,6 @@ class mAppWidget : AppWidgetProvider() {
                     appWidgetManager.updateAppWidget(con,remote)
                 }
             }
-//        }
     }
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         // There may be multiple widgets active, so update all of them
