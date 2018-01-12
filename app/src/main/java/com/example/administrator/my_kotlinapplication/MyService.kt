@@ -18,8 +18,6 @@ class MyService : Service() {
             return count
         }
     }
-
-
     /*
         必须实现的方法.绑定IBinder对象,应用程序通过该对象与Service通信
      */

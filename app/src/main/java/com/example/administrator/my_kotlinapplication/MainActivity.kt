@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
     var binder: MyService.MyBinder? = null
     private val connection: ServiceConnection = object : ServiceConnection{
-
         /**
          * 当Activity与Service断开连接时回调该方法
          */
@@ -41,7 +40,6 @@ class MainActivity : AppCompatActivity() {
             println("--disconnected--")
 
         }
-
         /**
          * 当Activity与Service连接成功时回调该方法
          */
@@ -49,7 +47,6 @@ class MainActivity : AppCompatActivity() {
             println("--connected--")
             binder = service as MyService.MyBinder? //获取service的onBind方法所返回的MyBinder对象
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,17 +65,6 @@ class MainActivity : AppCompatActivity() {
 //        startService(intent)//启动service
 //        startService(intent)//启动service
 //        stopService(intent)//停止service
-
-
-//        var i: Int = 0
-//        btn.setOnClickListener { toast("click ${i++}") }
-//        toast("哈哈!")
-//        forecast_list.layoutManager = LinearLayoutManager(this)
-//        forecast_list.adapter = Adapter_Forecast(items)
-//        variableTest()
-
-//        val request = Request("http://www.baidu.com")
-//        request.run()
     }
 
     override fun onDestroy() {
