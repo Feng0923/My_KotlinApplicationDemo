@@ -36,6 +36,14 @@
             android:name=".MyService"
             android:enabled="true"
             android:exported="true" />
+        <service android:name=".MusicService"/>
+
+        <receiver android:name=".MyReceiver">
+            <!--指定该BroadcastReceiver所相应的Intent的Action-->
+            <intent-filter>
+                <action android:name="com.example.Veng.MyBroadcast"></action>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
