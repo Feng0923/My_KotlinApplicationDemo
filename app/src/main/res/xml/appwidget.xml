@@ -7,6 +7,4 @@
     android:updatePeriodMillis="3000"
     android:previewImage="@mipmap/ic_launcher"
     android:widgetCategory="home_screen|keyguard"
-   >
-
-</appwidget-pro1vider>
+   ></appwidget-pro1vider>
