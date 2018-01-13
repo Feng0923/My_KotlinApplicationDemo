@@ -43,18 +43,8 @@ class mAppwidgeService : Service() {
     }
 
     private fun update() {
-        val remote = RemoteViews(packageName,R.layout.m_app_widget)
-        async {
-            val data = URL("https://sslapi.hitokoto.cn/?c=f&encode=text").readText()
-
-            uiThread {
-                remote.setTextViewText(R.id.appwidget_text, data)
-                Log.d("asdfs", data)
-                val con = ComponentName(applicationContext, mAppWidget::class.java)
-                val appWidgetManager = AppWidgetManager.getInstance(applicationContext)
-                appWidgetManager.updateAppWidget(con, remote)
-            }
-        }
+        val intent = Intent("android.appwidget.action.APPWIDGET_UPDATE")
+        sendBroadcast(intent)
     }
 
 

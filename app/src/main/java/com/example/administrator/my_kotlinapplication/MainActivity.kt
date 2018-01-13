@@ -10,6 +10,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
+import android.telecom.Call
 import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.app_layout.*
@@ -18,9 +22,11 @@ import org.jetbrains.anko.asyncResult
 import org.jetbrains.anko.uiThread
 import org.json.JSONObject
 import org.jsoup.Jsoup
-import java.net.URI
+import rx.Observable
+import rx.Observer
+import rx.Subscriber
 import java.net.URL
-import java.net.URLEncoder
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -56,22 +62,64 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.app_layout)
+        setContentView(R.layout.activity_main)
 //       async {
 //           val text = URL("https://www.baidu.com").readText()
 //           uiThread { show.text = text }
 //       }
 
 //        playMusic()
-        playMusicInService()
+//        playMusicInService()
 //        bindServiceTest()
 //        sendBroadcastTest()
 
+//        observerTest()
+          recyclerViewTest()
 //        startService(intent)//启动service
 //        startService(intent)//启动service
 //        stopService(intent)//停止service
     }
-     var intent1: Intent? = null
+
+    private fun recyclerViewTest() {
+        val items = arrayListOf<Item>()
+        this.items.forEach { val item = Item("梁",it);items.add(item) }
+        val adapter = Adapter_Forecast(this,items)
+        forecast_list.itemAnimator = DefaultItemAnimator()
+        forecast_list.layoutManager = LinearLayoutManager(this)
+//        forecast_list.layoutManager = GridLayoutManager(this,2)
+        forecast_list.adapter = adapter
+    }
+
+    private fun observerTest() {
+
+        val observer = object : Observer<String>{
+            override fun onNext(t: String?) {
+                println("Item: $t")
+            }
+
+            override fun onError(e: Throwable?) {
+                println("Error")
+
+            }
+
+            override fun onCompleted() {
+                println("completed")
+            }
+
+        }
+       val observable = Observable.create(object : Observable.OnSubscribe<String> {
+           override fun call(t: Subscriber<in String>?) {
+               t?.onNext("Hello")
+               t?.onNext("Hi")
+               t?.onNext("Aloha")
+               t?.onCompleted()
+           }
+       })
+        val observable1 = Observable.just("Hello", "Hi", "Aloha")
+        observable.subscribe(observer)
+    }
+
+    var intent1: Intent? = null
     private fun playMusicInService() {
         intent1 = Intent(applicationContext,MusicService::class.java)
         startService(intent1)
@@ -128,20 +176,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-//
-//            val url = URL("http://music.baidu.com/data/music/links?songIds={247911654}")
-//            async {
-//                val json = url.readText()
-//                uiThread {
-//                    val jsonObject: JSONObject = JSONObject(json).getJSONObject("data").getJSONArray("songList")[0] as JSONObject
-//                    val song: String = jsonObject.getString("songLink")
-////                    println(song)
-////                    println(jsonObject.toString())
-//                    mPlayer.setDataSource(song)
-//                    mPlayer.prepareAsync()
-//                    mPlayer.setOnPreparedListener { mPlayer.start()  }
-//                }
-//            }
+
         }
         val stop = findViewById(R.id.btn_stop)
         stop.setOnClickListener { mPlayer.stop() }
@@ -172,8 +207,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unbindService(connection)
-        stopService(intent1)
+//        unbindService(connection)
+//        stopService(intent1)
     }
 
 
