@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import java.sql.Array
 
 /**
  * Created by Administrator on 2017/12/27/027.
  */
-class Adapter_Forecast(var context: Context,var items: List<Item>) : RecyclerView.Adapter<Adapter_Forecast.MyHolder>() {
+class Adapter_Forecast(var context: Context,var items: ArrayList<Item>) : RecyclerView.Adapter<Adapter_Forecast.MyHolder>() {
     var mOnItemClickListener: OnItemClickListener? = null
     interface OnItemClickListener{
         fun onItemClick(view: View,position: Int)
@@ -27,7 +28,10 @@ class Adapter_Forecast(var context: Context,var items: List<Item>) : RecyclerVie
         holder?.tv_title?.text = items[position].title
         holder?.tv_content?.text = items[position].content
         if (mOnItemClickListener!=null){
-            holder?.itemView?.setOnClickListener { mOnItemClickListener?.onItemClick(holder.itemView,position) }
+            holder?.itemView?.setOnClickListener {v-> mOnItemClickListener?.onItemClick(v,position) }
+//            val onItemLongClick = mOnItemClickListener?.onItemLongClick(holder.itemView, position)
+            holder?.itemView?.setOnLongClickListener{v->mOnItemClickListener?.onItemLongClick(v,position);true}
+
         }
     }
 
@@ -43,5 +47,15 @@ class Adapter_Forecast(var context: Context,var items: List<Item>) : RecyclerVie
             tv_title = view.findViewById(R.id.tv_titile) as TextView
             tv_content = view.findViewById(R.id.tv_content) as TextView
         }
+    }
+
+    fun addItem(positon: Int): Unit {
+        items.add(Item("---","add"))
+        notifyItemInserted(positon)
+    }
+
+    fun remove(pos: Int): Unit {
+        items.removeAt(pos)
+        notifyItemRemoved(pos)
     }
 }

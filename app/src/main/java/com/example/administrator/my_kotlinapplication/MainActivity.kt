@@ -86,10 +86,11 @@ class MainActivity : AppCompatActivity() {
         adapter.setOnItemClickListener(object : Adapter_Forecast.OnItemClickListener{
             override fun onItemClick(view: View, position: Int) {
                 toast("click item$position")
+                adapter.addItem(0)
             }
 
             override fun onItemLongClick(view: View, position: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                adapter.remove(0)
             }
         })
     }
