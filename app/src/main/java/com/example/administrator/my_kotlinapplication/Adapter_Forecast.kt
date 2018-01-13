@@ -11,6 +11,14 @@ import android.widget.TextView
  * Created by Administrator on 2017/12/27/027.
  */
 class Adapter_Forecast(var context: Context,var items: List<Item>) : RecyclerView.Adapter<Adapter_Forecast.MyHolder>() {
+    var mOnItemClickListener: OnItemClickListener? = null
+    interface OnItemClickListener{
+        fun onItemClick(view: View,position: Int)
+        fun onItemLongClick(view: View,position: Int)
+    }
+    fun setOnItemClickListener(listener: OnItemClickListener){
+        mOnItemClickListener = listener
+    }
     override fun getItemCount(): Int {
         return items.size
     }
@@ -18,6 +26,9 @@ class Adapter_Forecast(var context: Context,var items: List<Item>) : RecyclerVie
     override fun onBindViewHolder(holder: MyHolder?, position: Int) {
         holder?.tv_title?.text = items[position].title
         holder?.tv_content?.text = items[position].content
+        if (mOnItemClickListener!=null){
+            holder?.itemView?.setOnClickListener { mOnItemClickListener?.onItemClick(holder.itemView,position) }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyHolder {

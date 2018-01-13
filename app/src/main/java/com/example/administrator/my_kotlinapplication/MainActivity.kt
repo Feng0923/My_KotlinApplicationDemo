@@ -4,21 +4,16 @@ package com.example.administrator.my_kotlinapplication
 import android.app.Service
 import android.content.*
 import android.media.MediaPlayer
-import android.net.Uri
-import android.os.AsyncTask
 import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
 import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
-import android.telecom.Call
-import android.util.Log
+import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.app_layout.*
 import org.jetbrains.anko.async
-import org.jetbrains.anko.asyncResult
 import org.jetbrains.anko.uiThread
 import org.json.JSONObject
 import org.jsoup.Jsoup
@@ -88,6 +83,15 @@ class MainActivity : AppCompatActivity() {
         forecast_list.layoutManager = LinearLayoutManager(this)
 //        forecast_list.layoutManager = GridLayoutManager(this,2)
         forecast_list.adapter = adapter
+        adapter.setOnItemClickListener(object : Adapter_Forecast.OnItemClickListener{
+            override fun onItemClick(view: View, position: Int) {
+                toast("click item$position")
+            }
+
+            override fun onItemLongClick(view: View, position: Int) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+        })
     }
 
     private fun observerTest() {
