@@ -31,6 +31,8 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     compile 'org.jetbrains.anko:anko-sdk15:0.8.2'
     compile 'org.jsoup:jsoup:1.9.2'
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile 'io.reactivex:rxandroid:1.0.1'
 
     compile "com.android.support:recyclerview-v7:25.3.1"
 }
