@@ -13,7 +13,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.app_layout.*
-import org.jetbrains.anko.async
+import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import org.json.JSONObject
 import org.jsoup.Jsoup
@@ -155,7 +155,7 @@ class MainActivity : AppCompatActivity() {
 //            mPlayer.start()
 //            http://musicmini.baidu.com/app/search/searchList.php?qword={%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA}&ie=utf-8&page={1}
             var name = song
-            async {
+            doAsync {
 //                val document = Jsoup.connect("http://musicmini.baidu.com/app/search/searchList.php?qword={$encode}&ie=utf-8&page={1}").get()
                 val document = Jsoup.connect("http://musicmini.baidu.com/app/search/searchList.php")
                         .data("qword","$name")
