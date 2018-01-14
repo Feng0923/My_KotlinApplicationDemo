@@ -1,18 +1,15 @@
 package com.example.administrator.my_kotlinapplication
 
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.os.Handler
 import android.util.Log
 import android.widget.RemoteViews
-import org.jetbrains.anko.async
+import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import java.net.URL
-import kotlin.math.log
 
 /**
  * Implementation of App Widget functionality.
@@ -27,7 +24,7 @@ class mAppWidget : AppWidgetProvider() {
 
     private fun fresh(context: Context?) {
         val remote = RemoteViews(context?.packageName, R.layout.m_app_widget)
-        async {
+        doAsync {
             val data = URL("https://sslapi.hitokoto.cn/?c=f&encode=text").readText()
             uiThread {
                 remote.setTextViewText(R.id.appwidget_text, data)
@@ -43,11 +40,11 @@ class mAppWidget : AppWidgetProvider() {
         // There may be multiple widgets active, so update all of them
         super.onUpdate(context, appWidgetManager, appWidgetIds)
         Log.d("mAppWidget","onUpdate")
-        val intent  = Intent("android.appwidget.action.APPWIDGET_UPDATE")
-        val pendingIntent = PendingIntent.getBroadcast(context,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
-        val remote = RemoteViews(context?.packageName, R.layout.m_app_widget)
-        remote.setOnClickPendingIntent(R.id.appwidget_text,pendingIntent)
-        fresh(context)
+//        val intent  = Intent("android.appwidget.action.APPWIDGET_UPDATE")
+//        val pendingIntent = PendingIntent.getBroadcast(context,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
+//        val remote = RemoteViews(context?.packageName, R.layout.m_app_widget)
+//        remote.setOnClickPendingIntent(R.id.appwidget_text,pendingIntent)
+//        fresh(context)
     }
 
     override fun onEnabled(context: Context) {

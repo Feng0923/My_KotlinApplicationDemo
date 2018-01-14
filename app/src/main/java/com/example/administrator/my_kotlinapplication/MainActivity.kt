@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 //        sendBroadcastTest()
 
 //        observerTest()
-          recyclerViewTest()
+//          recyclerViewTest()
 //        startService(intent)//启动service
 //        startService(intent)//启动service
 //        stopService(intent)//停止service
