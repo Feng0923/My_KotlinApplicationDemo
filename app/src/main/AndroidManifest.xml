@@ -10,7 +10,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".MaterialDesign.LoginActivity">
+        <activity android:name=".ToolbarDemo.ToolbarDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,7 +46,10 @@
             </intent-filter>
         </receiver>
 
-        <!--<activity android:name=".MaterialDesign.LoginActivity"></activity>-->
+        <!-- <activity android:name=".MaterialDesign.LoginActivity"></activity> -->
+        <activity android:name=".HttpDemo.HTTPActivity" />
+        <!-- <activity android:name=".CardViewDemo.CardViewDemoActivity"></activity> -->
+        <!--<activity android:name=".ToolbarDemo.ToolbarDemoActivity"></activity>-->
     </application>
 
 </manifest>

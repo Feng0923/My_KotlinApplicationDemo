@@ -7,13 +7,12 @@
         android:id="@+id/appwidget_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
-        android:padding="9dp"
-        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:layout_margin="8dp"
+        android:padding="9dp"
+        android:gravity="left"
         android:textSize="18dp"
-        android:text="梁胜峰"
-        />
+        android:text="梁胜峰" />
 
 </RelativeLayout>
