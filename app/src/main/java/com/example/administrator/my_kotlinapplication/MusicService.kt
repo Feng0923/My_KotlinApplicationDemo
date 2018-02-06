@@ -9,7 +9,7 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Binder
 import android.os.IBinder
-import org.jetbrains.anko.async
+import org.jetbrains.anko.custom.async
 import org.jetbrains.anko.uiThread
 import org.json.JSONObject
 import org.jsoup.Jsoup

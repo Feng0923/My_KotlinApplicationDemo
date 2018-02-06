@@ -8,7 +8,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
-import org.jetbrains.anko.async
+import org.jetbrains.anko.custom.async
 import org.jetbrains.anko.uiThread
 import java.net.URL
 
