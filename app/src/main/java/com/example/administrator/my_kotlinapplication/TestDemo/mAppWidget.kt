@@ -1,4 +1,4 @@
-package com.example.administrator.my_kotlinapplication
+package com.example.administrator.my_kotlinapplication.TestDemo
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.RemoteViews
+import com.example.administrator.my_kotlinapplication.R
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import java.net.URL
@@ -49,18 +50,18 @@ class mAppWidget : AppWidgetProvider() {
 
     override fun onEnabled(context: Context) {
         // Enter relevant functionality for when the first widget is created
-        context.startService(Intent(context,mAppwidgeService::class.java))
+        context.startService(Intent(context, mAppwidgeService::class.java))
         Log.d("mAppWidget","onEnabled")
 
     }
 
     override fun onDeleted(context: Context?, appWidgetIds: IntArray?) {
         super.onDeleted(context, appWidgetIds)
-        context?.stopService(Intent(context,mAppwidgeService::class.java))
+        context?.stopService(Intent(context, mAppwidgeService::class.java))
     }
     override fun onDisabled(context: Context) {
         // Enter relevant functionality for when the last widget is disabled
-        context.stopService(Intent(context,mAppwidgeService::class.java))
+        context.stopService(Intent(context, mAppwidgeService::class.java))
         Log.d("mAppWidget","onDisabled")
 
     }

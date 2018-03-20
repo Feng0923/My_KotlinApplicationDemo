@@ -1,4 +1,4 @@
-package com.example.administrator.my_kotlinapplication
+package com.example.administrator.my_kotlinapplication.TestDemo
 
 
 import android.app.PendingIntent
@@ -8,6 +8,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
+import com.example.administrator.my_kotlinapplication.R
 import org.jetbrains.anko.custom.async
 import org.jetbrains.anko.uiThread
 import java.net.URL
@@ -30,7 +31,7 @@ class PushData : AppWidgetProvider() {
         val pendingIntent = PendingIntent.getBroadcast(context, R.id.show, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         remote.setOnClickPendingIntent(R.id.show,pendingIntent)
 
-      val componentname = ComponentName(context,PushData::class.java)
+      val componentname = ComponentName(context, PushData::class.java)
         appWidgetManager?.updateAppWidget(componentname,remote)
     }
 }

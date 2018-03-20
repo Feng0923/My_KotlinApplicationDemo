@@ -9,8 +9,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:hardwareAccelerated="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".ToolbarDemo.ToolbarDemoActivity">
+        <activity android:name=".ViewDemo.ViewDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +20,7 @@
         </activity>
 
         <receiver
-            android:name=".mAppWidget"
+            android:name=".TestDemo.mAppWidget"
             android:label="添加">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -31,14 +32,14 @@
                 android:resource="@xml/m_app_widget_info" />
         </receiver>
 
-        <service android:name=".mAppwidgeService" />
+        <service android:name=".TestDemo.mAppwidgeService" />
         <service
-            android:name=".MyService"
+            android:name=".TestDemo.MyService"
             android:enabled="true"
             android:exported="true" />
-        <service android:name=".MusicService" />
+        <service android:name=".TestDemo.MusicService" />
 
-        <receiver android:name=".MyReceiver">
+        <receiver android:name=".TestDemo.MyReceiver">
 
             <!-- 指定该BroadcastReceiver所相应的Intent的Action -->
             <intent-filter>
@@ -49,7 +50,8 @@
         <!-- <activity android:name=".MaterialDesign.LoginActivity"></activity> -->
         <activity android:name=".HttpDemo.HTTPActivity" />
         <!-- <activity android:name=".CardViewDemo.CardViewDemoActivity"></activity> -->
-        <!--<activity android:name=".ToolbarDemo.ToolbarDemoActivity"></activity>-->
+        <!-- <activity android:name=".ToolbarDemo.ToolbarDemoActivity"></activity> -->
+        <!--<activity android:name=".ViewDemo.ViewDemoActivity"></activity>-->
     </application>
 
 </manifest>

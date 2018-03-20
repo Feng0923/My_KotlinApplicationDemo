@@ -1,4 +1,4 @@
-package com.example.administrator.my_kotlinapplication
+package com.example.administrator.my_kotlinapplication.TestDemo
 
 
 import android.app.Service
@@ -12,6 +12,7 @@ import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
+import com.example.administrator.my_kotlinapplication.R
 import kotlinx.android.synthetic.main.app_layout.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -57,13 +58,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.app_layout)
+
 //       async {
 //           val text = URL("https://www.baidu.com").readText()
 //           uiThread { show.text = text }
 //       }
 
-//        playMusic()
+        playMusic()
 //        playMusicInService()
 //        bindServiceTest()
 //        sendBroadcastTest()
@@ -77,13 +79,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun recyclerViewTest() {
         val items = arrayListOf<Item>()
-        this.items.forEach { val item = Item("梁",it);items.add(item) }
-        val adapter = Adapter_Forecast(this,items)
+        this.items.forEach { val item = Item("梁", it);items.add(item) }
+        val adapter = Adapter_Forecast(this, items)
         forecast_list.itemAnimator = DefaultItemAnimator()
         forecast_list.layoutManager = LinearLayoutManager(this)
 //        forecast_list.layoutManager = GridLayoutManager(this,2)
         forecast_list.adapter = adapter
-        adapter.setOnItemClickListener(object : Adapter_Forecast.OnItemClickListener{
+        adapter.setOnItemClickListener(object : Adapter_Forecast.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 toast("click item$position")
                 adapter.addItem(0)
@@ -126,7 +128,7 @@ class MainActivity : AppCompatActivity() {
 
     var intent1: Intent? = null
     private fun playMusicInService() {
-        intent1 = Intent(applicationContext,MusicService::class.java)
+        intent1 = Intent(applicationContext, MusicService::class.java)
         startService(intent1)
         println("asdfasdfasdf")
         val intent = Intent("com.example.music")

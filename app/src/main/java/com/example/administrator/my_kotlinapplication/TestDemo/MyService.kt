@@ -1,4 +1,4 @@
-package com.example.administrator.my_kotlinapplication
+package com.example.administrator.my_kotlinapplication.TestDemo
 
 import android.app.Service
 import android.content.Intent

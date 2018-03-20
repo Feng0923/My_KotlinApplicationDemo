@@ -1,4 +1,4 @@
-package com.example.administrator.my_kotlinapplication
+package com.example.administrator.my_kotlinapplication.TestDemo
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import java.sql.Array
+import com.example.administrator.my_kotlinapplication.R
 
 /**
  * Created by Administrator on 2017/12/27/027.
@@ -50,7 +50,7 @@ class Adapter_Forecast(var context: Context,var items: ArrayList<Item>) : Recycl
     }
 
     fun addItem(positon: Int): Unit {
-        items.add(Item("---","add"))
+        items.add(Item("---", "add"))
         notifyItemInserted(positon)
     }
 

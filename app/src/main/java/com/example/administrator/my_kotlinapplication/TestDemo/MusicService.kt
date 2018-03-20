@@ -1,4 +1,4 @@
-package com.example.administrator.my_kotlinapplication
+package com.example.administrator.my_kotlinapplication.TestDemo
 
 import android.app.Service
 import android.content.BroadcastReceiver
@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Binder
 import android.os.IBinder
 import org.jetbrains.anko.custom.async

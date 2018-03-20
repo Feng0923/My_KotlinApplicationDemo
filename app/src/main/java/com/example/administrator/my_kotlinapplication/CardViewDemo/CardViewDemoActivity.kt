@@ -15,6 +15,7 @@ class CardViewDemoActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+
         sb_jianju.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 mCardView.setContentPadding(progress,progress,progress,progress)

@@ -1,4 +1,4 @@
-package com.example.administrator.my_kotlinapplication
+package com.example.administrator.my_kotlinapplication.TestDemo
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -36,7 +36,7 @@ class mAppwidgeService : Service() {
 //        }, 0, 1000*60)
         val millis: Long = 1000*3
         val mIntent = Intent("android.appwidget.action.APPWIDGET_UPDATE")
-        mIntent.setClass(applicationContext,mAppWidget::class.java)
+        mIntent.setClass(applicationContext, mAppWidget::class.java)
         val pendingIntent = PendingIntent.getBroadcast(applicationContext,0,mIntent,0)
         alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime(), millis,pendingIntent)
         return super.onStartCommand(intent, flags, startId)
