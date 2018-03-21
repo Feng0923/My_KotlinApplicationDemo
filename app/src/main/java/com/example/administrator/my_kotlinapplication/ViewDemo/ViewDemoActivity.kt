@@ -1,5 +1,7 @@
 package com.example.administrator.my_kotlinapplication.ViewDemo
 
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.administrator.my_kotlinapplication.R
@@ -11,6 +13,13 @@ class ViewDemoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_demo)
 //        initView()
+        initPathView()
+    }
+
+    private fun initPathView() {
+        val anim = pathDemo_image.drawable as AnimatedVectorDrawable
+        pathDemo_image.setOnClickListener { anim.start() }
+//        anim.start()
     }
 
     private fun initView() {

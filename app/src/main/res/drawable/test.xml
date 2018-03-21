@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:drawable="@drawable/ic_android_black_24dp"
+    tools:targetApi="lollipop">
+    <target
+        android:animation="@animator/anim"
+        android:name="path1">
+    </target>
+    <target
+        android:animation="@animator/anim"
+        android:name="path2">
+    </target>
+    <target
+        android:animation="@animator/anim"
+        android:name="path3">
+    </target>
+    <target
+        android:animation="@animator/anim"
+        android:name="path4">
+    </target>
+    <target
+        android:animation="@animator/anim"
+        android:name="path5">
+    </target>
+    <target
+        android:animation="@animator/anim"
+        android:name="path6">
+    </target>
+</animated-vector>
