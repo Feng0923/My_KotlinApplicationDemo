@@ -80,7 +80,7 @@ class PictureTextDemo : View{
         val pWidth = 1000
         val pHeight = 1000
         val canvas = mPicture.beginRecording(pWidth,pHeight)
-        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.qq__20171204200214)
+        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.dm)
         val rect = Rect(1800,0,2500,1000)
         val rectf = Rect(0,0,400,400)
 //        canvas.drawBitmap(bitmap,0f,0f,mPaint)

@@ -13,14 +13,13 @@ class ViewDemoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_demo)
 //        initView()
-        initPathView()
+//        initPathView()
     }
 
-    private fun initPathView() {
-        val anim = pathDemo_image.drawable as AnimatedVectorDrawable
-        pathDemo_image.setOnClickListener { anim.start() }
-//        anim.start()
-    }
+//    private fun initPathView() {
+//        val anim = pathDemo_image.drawable as AnimatedVectorDrawable
+//        pathDemo_image.setOnClickListener { anim.start() }
+//    }
 
     private fun initView() {
         val arrayList = ArrayList<PieData>()

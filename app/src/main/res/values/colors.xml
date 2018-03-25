@@ -5,4 +5,5 @@
     <color name="colorAccent">#e1ff40af</color>
     <color name="btnColor">#d4ff40af</color>
     <color name="lineColorDefault">#000000</color>
+    <color name="MatrixPaint">#efec29fd</color>
 </resources>
